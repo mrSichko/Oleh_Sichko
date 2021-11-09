@@ -10,7 +10,6 @@ public class OtherBeanC {
     private BeanC beanC;
 
     public OtherBeanC() {
-     this.beanC = new BeanC();
         System.out.println(beanC);
     }
 }

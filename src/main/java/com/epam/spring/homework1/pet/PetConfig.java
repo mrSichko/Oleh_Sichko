@@ -1,29 +1,26 @@
 package com.epam.spring.homework1.pet;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.*;
 
 @Configuration
-@ComponentScan
+@ComponentScan(excludeFilters = @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, value = Spider.class))
 public class PetConfig {
-    @Bean
-    public Cat cat(){
-        return new Cat();
-    }
 
     @Bean
-    public Dog dog(){
-        return new Dog();
-    }
-
-    @Bean
-    public Cheetah cheetah(){
+    public Cheetah cheetah() {
         return new Cheetah();
     }
 
     @Bean
-    public Spider spider(){
-        return new Spider();
+    @Qualifier("cheetahBean")
+    public Cheetah getCheetah() {
+        return new Cheetah();
     }
+
+    @Bean
+    public Cheetah otherCheetah(@Qualifier("cheetahBean") Cheetah cheetah) {
+        return cheetah;
+    }
+
 }
