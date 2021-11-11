@@ -1,10 +1,16 @@
 package com.epam.spring.homework2.beans;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BeanD {
+@Order(1)
+public class BeanD implements Bean{
+    @Value("${beanD.name}")
     private String name ;
+
+    @Value("${beanD.value}")
     private int value ;
 
     public String getName() {
@@ -13,6 +19,14 @@ public class BeanD {
 
     public int getValue() {
         return value;
+    }
+
+    public void customInitMethod(){
+        System.out.println(this.getClass().getSimpleName() + " - customInitMethod()");
+    }
+
+    public void customDestroyMethod(){
+        System.out.println(this.getClass().getSimpleName() + " - customDestroyMethod()");
     }
 
     @Override
