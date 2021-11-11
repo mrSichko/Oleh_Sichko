@@ -8,29 +8,31 @@ import org.springframework.context.annotation.Bean;
 @PropertySource("classpath:application.properties")
 @ComponentScan("com.epam.spring.homework2.beans")
 public class BeansConfig {
-    @Bean
-    public BeanA beanA() {
-        return new BeanA();
-    }
 
-    @Bean(initMethod = "customInitMethod", destroyMethod = "customDestroyMethod")
+    @Bean(
+            initMethod = "customInitMethod",
+            destroyMethod = "customDestroyMethod"
+    )
+    @DependsOn("beanD")
     public BeanB beanB() {
         return new BeanB();
     }
 
-    @Bean(initMethod = "customInitMethod", destroyMethod = "customDestroyMethod")
+    @Bean(
+            initMethod = "customInitMethod",
+            destroyMethod = "customDestroyMethod"
+    )
+    @DependsOn("beanB")
     public BeanC beanC() {
         return new BeanC();
     }
 
-    @Bean(initMethod = "customInitMethod", destroyMethod = "customDestroyMethod")
+    @Bean(
+            initMethod = "customInitMethod",
+            destroyMethod = "customDestroyMethod"
+    )
     public BeanD beanD() {
         return new BeanD();
-    }
-
-    @Bean
-    public BeanE beanE() {
-        return new BeanE();
     }
 
     @Bean

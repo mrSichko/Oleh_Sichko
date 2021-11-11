@@ -1,11 +1,9 @@
 package com.epam.spring.homework2.beans;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-@Order(2)
 public class BeanB implements Bean {
     @Value("${beanB.name}")
     private String name;

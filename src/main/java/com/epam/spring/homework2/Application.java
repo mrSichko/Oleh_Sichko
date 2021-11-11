@@ -8,6 +8,7 @@ public class Application {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(BeansConfig.class);
         String[] beanDefinitionNames = context.getBeanDefinitionNames();
+
         for (String bean : beanDefinitionNames) {
             System.out.println(context.getBean(bean));
         }

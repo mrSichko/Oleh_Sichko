@@ -3,9 +3,9 @@ package com.epam.spring.homework2.beans;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BeanF implements Bean{
-    private String name ;
-    private int value ;
+public class BeanF implements Bean {
+    private String name;
+    private int value;
 
     public String getName() {
         return name;
