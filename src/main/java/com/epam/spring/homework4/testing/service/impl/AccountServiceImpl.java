@@ -2,8 +2,8 @@ package com.epam.spring.homework4.testing.service.impl;
 
 import com.epam.spring.homework4.testing.controller.dto.AccountDto;
 import com.epam.spring.homework4.testing.service.AccountService;
-import com.epam.spring.homework4.testing.service.model.Account;
-import com.epam.spring.homework4.testing.service.repository.AccountRepository;
+import com.epam.spring.homework4.testing.model.Account;
+import com.epam.spring.homework4.testing.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

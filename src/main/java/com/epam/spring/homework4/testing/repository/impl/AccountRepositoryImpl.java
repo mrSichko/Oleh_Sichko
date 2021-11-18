@@ -1,7 +1,7 @@
-package com.epam.spring.homework4.testing.service.repository.impl;
+package com.epam.spring.homework4.testing.repository.impl;
 
-import com.epam.spring.homework4.testing.service.model.Account;
-import com.epam.spring.homework4.testing.service.repository.AccountRepository;
+import com.epam.spring.homework4.testing.model.Account;
+import com.epam.spring.homework4.testing.repository.AccountRepository;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;

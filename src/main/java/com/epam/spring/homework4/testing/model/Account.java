@@ -1,4 +1,4 @@
-package com.epam.spring.homework4.testing.service.model;
+package com.epam.spring.homework4.testing.model;
 
 import lombok.Builder;
 import lombok.Data;
