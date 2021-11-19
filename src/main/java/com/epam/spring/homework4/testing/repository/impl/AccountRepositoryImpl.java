@@ -1,5 +1,6 @@
 package com.epam.spring.homework4.testing.repository.impl;
 
+import com.epam.spring.homework4.testing.exception.EntityNotFoundException;
 import com.epam.spring.homework4.testing.model.Account;
 import com.epam.spring.homework4.testing.repository.AccountRepository;
 import org.springframework.stereotype.Component;
@@ -24,7 +25,7 @@ public class AccountRepositoryImpl implements AccountRepository {
     public Account find(String login) {
         return list.stream()
                 .filter(account -> account.getLogin().equals(login)).findFirst()
-                .orElseThrow(() -> new RuntimeException("Account is not found!"));
+                .orElseThrow(() -> new EntityNotFoundException("Account is not found"));
     }
 
     @Override
@@ -38,7 +39,7 @@ public class AccountRepositoryImpl implements AccountRepository {
         if (isDeleted) {
             list.add(account);
         } else {
-            throw new RuntimeException("Account is not found!");
+            throw new EntityNotFoundException("Account is not found!");
         }
         return account;
 

@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,7 @@ public class AccountController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(value = "/account")
-    public AccountDto createAccount(@RequestBody AccountDto accountDto) {
+    public AccountDto createAccount(@RequestBody @Valid AccountDto accountDto) {
         return accountService.createAccount(accountDto);
     }
 
@@ -34,7 +35,7 @@ public class AccountController {
 
     @ResponseStatus(HttpStatus.OK)
     @PutMapping(value = "/account/{login}")
-    public AccountDto updateAccount(@PathVariable String login, @RequestBody AccountDto accountDto) {
+    public AccountDto updateAccount(@PathVariable String login, @RequestBody @Valid AccountDto accountDto) {
         return accountService.update(login, accountDto);
     }
 
