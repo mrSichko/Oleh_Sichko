@@ -18,6 +18,9 @@ public class AccountDto {
     @Email
     private String email;
 
+    @NotBlank
+    private String password;
+
     @Min(1)
     @Max(2)
     private int roleId;

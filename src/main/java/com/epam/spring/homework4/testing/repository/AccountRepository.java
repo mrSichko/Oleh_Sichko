@@ -3,18 +3,20 @@ package com.epam.spring.homework4.testing.repository;
 
 import com.epam.spring.homework4.testing.exception.EntityNotFoundException;
 import com.epam.spring.homework4.testing.model.Account;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+@Repository
+public interface AccountRepository extends JpaRepository<Account, Integer> {
 
-public interface AccountRepository {
+    Account save(Account account);
 
-    Account createAccount(Account account);
-
-    Account find(String login) throws EntityNotFoundException;
+    Account findByLogin(String login) throws EntityNotFoundException;
 
     List<Account> findAll();
 
-    Account update(String login, Account account) throws EntityNotFoundException;
-
-    void delete(String login);
+    @Transactional
+    void removeByLogin(String login);
 }

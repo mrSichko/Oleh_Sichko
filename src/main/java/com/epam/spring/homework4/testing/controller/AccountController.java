@@ -33,11 +33,6 @@ public class AccountController {
         return accountService.findAll();
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @PutMapping(value = "/account/{login}")
-    public AccountDto updateAccount(@PathVariable String login, @RequestBody @Valid AccountDto accountDto) {
-        return accountService.update(login, accountDto);
-    }
 
     @DeleteMapping(value = "/account/{login}")
     public ResponseEntity<Void> deleteAccount(@PathVariable String login) {

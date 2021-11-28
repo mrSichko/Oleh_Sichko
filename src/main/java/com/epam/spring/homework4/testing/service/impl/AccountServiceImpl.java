@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 @Slf4j
@@ -21,14 +23,15 @@ public class AccountServiceImpl implements AccountService {
     public AccountDto createAccount(AccountDto accountDto) {
         log.info("createAccount with login {}", accountDto.getLogin());
         Account account = AccountMapper.INSTANCE.mapAccount(accountDto);
-        account = accountRepository.createAccount(account);
+        account.setCreateTime(Timestamp.from(Instant.now()));
+        account = accountRepository.save(account);
         return AccountMapper.INSTANCE.mapAccountDto(account);
     }
 
     @Override
     public AccountDto find(String login) {
         log.info("find by login {}", login);
-        Account account = accountRepository.find(login);
+        Account account = accountRepository.findByLogin(login);
         return AccountMapper.INSTANCE.mapAccountDto(account);
     }
 
@@ -39,17 +42,9 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public AccountDto update(String login, AccountDto accountDto) {
-        log.info("update account with login {}", login);
-        Account account = AccountMapper.INSTANCE.mapAccount(accountDto);
-        account = accountRepository.update(login, account);
-        return AccountMapper.INSTANCE.mapAccountDto(account);
-    }
-
-    @Override
     public void delete(String login) {
         log.info("delete account with login {}", login);
-        accountRepository.delete(login);
+        accountRepository.removeByLogin(login);
     }
 
 }

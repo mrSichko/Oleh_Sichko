@@ -13,7 +13,5 @@ public interface AccountService {
 
     List<AccountDto> findAll();
 
-    AccountDto update(String login, AccountDto accountDto) throws EntityNotFoundException;
-
     void delete(String login);
 }
