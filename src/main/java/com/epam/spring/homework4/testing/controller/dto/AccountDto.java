@@ -1,5 +1,7 @@
 package com.epam.spring.homework4.testing.controller.dto;
 
+import com.epam.spring.homework4.testing.model.Language;
+import com.epam.spring.homework4.testing.model.Test;
 import lombok.Builder;
 import lombok.Data;
 
@@ -7,7 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @Builder
@@ -21,11 +23,7 @@ public class AccountDto {
     @NotBlank
     private String password;
 
-    @Min(1)
-    @Max(2)
-    private int roleId;
+    private RoleDto role;
 
-    @Min(1)
-    @Max(2)
-    private int languageId;
+    private LanguageDto language;
 }

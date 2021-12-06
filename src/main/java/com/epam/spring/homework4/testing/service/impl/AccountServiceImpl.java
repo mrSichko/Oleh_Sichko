@@ -19,6 +19,7 @@ import java.util.List;
 public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
 
+
     @Override
     public AccountDto createAccount(AccountDto accountDto) {
         log.info("createAccount with login {}", accountDto.getLogin());
@@ -36,14 +37,27 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public AccountDto findByEmail(String email) {
+        log.info("find by email {}", email);
+        Account account = accountRepository.findByEmail(email);
+        return AccountMapper.INSTANCE.mapAccountDto(account);
+    }
+
+    @Override
     public List<AccountDto> findAll() {
         log.info("find all accounts");
         return AccountMapper.INSTANCE.mapAccountsDto(accountRepository.findAll());
     }
 
     @Override
+    public void deleteByEmail(String email) {
+        log.info("delete account with email - " + email);
+        accountRepository.removeByEmail(email);
+    }
+
+    @Override
     public void delete(String login) {
-        log.info("delete account with login {}", login);
+        log.info("delete account with login - " + login);
         accountRepository.removeByLogin(login);
     }
 

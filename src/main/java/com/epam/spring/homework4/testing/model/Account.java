@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "account")
@@ -20,18 +21,29 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "login")
     private String login;
 
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "password")
     private String password;
 
     @Column(name = "create_time")
     private Timestamp createTime;
 
-    @Column(name = "role_id")
-    private int roleId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "role_id")
+    private Role role;
 
-    @Column(name = "language_id")
-    private int languageId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "language_id")
+    private Language language;
+
+    @OneToOne(mappedBy = "account", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    private AccountDetails accountDetails;
+
+    @OneToMany(mappedBy = "account", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    private List<Test> testList;
 }

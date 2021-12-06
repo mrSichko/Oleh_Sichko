@@ -1,7 +1,9 @@
 package com.epam.spring.homework4.testing.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 import javax.persistence.*;
@@ -10,8 +12,10 @@ import javax.persistence.*;
 @Table(name = "role")
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Role {
-    private enum Name{
+    public enum Name{
         STUDENT,
         ADMIN;
     }

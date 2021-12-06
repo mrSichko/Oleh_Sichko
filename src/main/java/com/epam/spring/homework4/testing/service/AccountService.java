@@ -11,7 +11,11 @@ public interface AccountService {
 
     AccountDto find(String login) throws EntityNotFoundException;
 
+    AccountDto findByEmail(String email);
+
     List<AccountDto> findAll();
+
+    void deleteByEmail(String email);
 
     void delete(String login);
 }

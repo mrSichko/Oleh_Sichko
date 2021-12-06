@@ -1,4 +1,4 @@
-package com.epam.spring.homework4.testing.controller;
+package com.epam.spring.homework4.testing.controller.errorHandler;
 
 import com.epam.spring.homework4.testing.exception.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
