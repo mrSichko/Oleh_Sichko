@@ -10,31 +10,32 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@RequestMapping("/account/")
 @RestController
 @RequiredArgsConstructor
 public class TestController {
     private final TestService testService;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(value = "/account/test")
+    @PostMapping(value = "/test")
     public TestDto createTest(@RequestBody @Valid TestDto testDto) {
         return testService.save(testDto);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/account/test/{name}")
+    @GetMapping(value = "/test/{name}")
     public TestDto find(@PathVariable String name) {
         return testService.findByName(name);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/account/test")
+    @GetMapping(value = "/test")
     public List<TestDto> findAll() {
         return testService.findAll();
     }
 
 
-    @DeleteMapping(value = "/account/test/{name}")
+    @DeleteMapping(value = "/test/{name}")
     public ResponseEntity<Void> deleteTest(@PathVariable String name) {
         testService.removeByName(name);
         return ResponseEntity.noContent().build();

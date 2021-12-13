@@ -8,25 +8,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-
+@RequestMapping("/account/")
 @RestController
 @RequiredArgsConstructor
 public class AccountDetailsController {
     private final AccountDetailsService accountDetailsService;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(value = "/account/account-details")
+    @PostMapping(value = "/account-details")
     public AccountDetailsDto createAccountDetails(@RequestBody @Valid AccountDetailsDto accountDetailsDto) {
         return accountDetailsService.save(accountDetailsDto);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/account/account-details/{accountId}")
+    @GetMapping(value = "/account-details/{accountId}")
     public AccountDetailsDto find(@PathVariable Integer accountId) {
         return accountDetailsService.findByAccountId(accountId);
     }
 
-    @DeleteMapping(value = "/account/account-details/{accountId}")
+    @DeleteMapping(value = "/account-details/{accountId}")
     public ResponseEntity<Void> deleteAccountDetails(@PathVariable Integer accountId) {
         accountDetailsService.removeByAccountId(accountId);
         return ResponseEntity.noContent().build();

@@ -23,7 +23,6 @@ public class TestServiceImpl implements TestService {
     public TestDto save(TestDto testDto) {
         log.info("save test with name - " + testDto.getName());
         Test test = TestMapper.INSTANCE.mapTest(testDto);
-        test.setCreateTime(Timestamp.from(Instant.now()));
         testRepository.save(test);
         return TestMapper.INSTANCE.mapTestDto(test);
     }

@@ -24,7 +24,7 @@ public class AccountController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/account/{login}")
     public AccountDto find(@PathVariable String login) {
-        return accountService.find(login);
+        return accountService.findByLogin(login);
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -39,13 +39,14 @@ public class AccountController {
         return accountService.findAll();
     }
 
-
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(value = "/account/{login}")
     public ResponseEntity<Void> deleteAccount(@PathVariable String login) {
         accountService.delete(login);
         return ResponseEntity.noContent().build();
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(value = "/account/email/{email}")
     public ResponseEntity<Void> deleteAccountByEmail(@PathVariable String email) {
         accountService.deleteByEmail(email);

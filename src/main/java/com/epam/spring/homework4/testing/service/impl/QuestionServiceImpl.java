@@ -21,7 +21,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public QuestionDto save(QuestionDto questionDto) {
-        log.info("save question to test with id - " + questionDto.getTest().getId());
+        log.info("save question with id - " + questionDto.getId());
         Question question = QuestionMapper.INSTANCE.mapQuestion(questionDto);
         questionRepository.save(question);
         return QuestionMapper.INSTANCE.mapQuestionDto(question);

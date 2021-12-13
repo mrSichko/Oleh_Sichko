@@ -24,13 +24,12 @@ public class AccountServiceImpl implements AccountService {
     public AccountDto createAccount(AccountDto accountDto) {
         log.info("createAccount with login {}", accountDto.getLogin());
         Account account = AccountMapper.INSTANCE.mapAccount(accountDto);
-        account.setCreateTime(Timestamp.from(Instant.now()));
         account = accountRepository.save(account);
         return AccountMapper.INSTANCE.mapAccountDto(account);
     }
 
     @Override
-    public AccountDto find(String login) {
+    public AccountDto findByLogin(String login) {
         log.info("find by login {}", login);
         Account account = accountRepository.findByLogin(login);
         return AccountMapper.INSTANCE.mapAccountDto(account);

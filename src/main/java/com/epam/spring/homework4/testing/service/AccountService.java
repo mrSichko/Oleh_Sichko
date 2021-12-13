@@ -9,7 +9,7 @@ public interface AccountService {
 
     AccountDto createAccount(AccountDto accountDto);
 
-    AccountDto find(String login) throws EntityNotFoundException;
+    AccountDto findByLogin(String login) throws EntityNotFoundException;
 
     AccountDto findByEmail(String email);
 

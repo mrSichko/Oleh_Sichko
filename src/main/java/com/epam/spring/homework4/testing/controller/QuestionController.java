@@ -11,32 +11,32 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-
+@RequestMapping("/account/test/")
 @RestController
 @RequiredArgsConstructor
 public class QuestionController {
     private final QuestionService questionService;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping(value = "/account/test/question")
+    @PostMapping(value = "/question")
     public QuestionDto createQuestion(@RequestBody @Valid QuestionDto questionDto) {
         return questionService.save(questionDto);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/account/test/question/{questionId}")
+    @GetMapping(value = "/question/{questionId}")
     public QuestionDto find(@PathVariable Integer questionId) {
         return questionService.findByQuestionId(questionId);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/account/test/all-questions/{testId}")
+    @GetMapping(value = "/all-questions/{testId}")
     public List<QuestionDto> findAllTestByTestId(@PathVariable Integer testId) {
         return questionService.findAllByTestId(testId);
     }
 
 
-    @DeleteMapping(value = "/account/test/question/{questionId}")
+    @DeleteMapping(value = "/question/{questionId}")
     public ResponseEntity<Void> deleteQuestion(@PathVariable Integer questionId) {
         questionService.removeByQuestionId(questionId);
         return ResponseEntity.noContent().build();
